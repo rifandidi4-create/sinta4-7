@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lapas SINTA — Blok Jurnal Ilmiah</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080b;--p:#12141a;--l:#2a2d38;--red:#c1121f;--amb:#ffb703;--tx:#d9dbe1;--mu:#8a8f9e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.06em;margin:0;font-weight:400}
+.typ{font-family:'Special Elite','Courier New',monospace}
+a{color:var(--amb)}
+/* background */
+#bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 0,#1b0a0d,#07080b 65%)}
+#bg:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 70px,#1d2029 70px 78px);opacity:.55}
+.fog{position:absolute;left:-50%;width:200%;height:40%;background:radial-gradient(ellipse,rgba(150,160,180,.12),transparent 60%);animation:fog 40s linear infinite}
+.fog.a{top:10%}.fog.b{top:55%;animation-duration:60s;animation-direction:reverse}
+@keyframes fog{to{transform:translateX(25%)}}
+.beam{position:absolute;top:-10%;left:0;width:60vmax;height:140%;transform-origin:50% 0;background:conic-gradient(from 170deg at 50% 0,transparent 0 6deg,rgba(255,230,150,.16) 8deg 12deg,transparent 14deg);animation:sweep 14s ease-in-out infinite alternate;filter:blur(6px)}
+@keyframes sweep{from{transform:translateX(-10vw) rotate(-35deg)}to{transform:translateX(70vw) rotate(35deg)}}
+nav{position:sticky;top:0;z-index:20;display:flex;gap:18px;align-items:center;justify-content:space-between;padding:12px 5vw;background:rgba(7,8,11,.85);backdrop-filter:blur(8px);border-bottom:2px solid var(--red)}
+nav b{font-family:'Bebas Neue';font-size:1.5rem;letter-spacing:.1em;color:var(--red)}
+nav div{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem}
+nav a{text-decoration:none;color:var(--tx)}nav a:hover{color:var(--amb)}
+.wrap{max-width:1150px;margin:auto;padding:0 5vw}
+/* hero */
+.hero{text-align:center;padding:60px 0 40px;position:relative}
+.hero svg{width:min(260px,60%);filter:drop-shadow(0 0 25px rgba(193,18,31,.5))}
+.hero h1{font-size:clamp(3rem,11vw,7.5rem);line-height:1;color:#f1f1f1;text-shadow:0 0 30px rgba(193,18,31,.8);animation:fl 5s infinite}
+.hero h1 span{color:var(--red)}
+@keyframes fl{0%,92%,96%,100%{opacity:1}93%{opacity:.4}95%{opacity:.8}}
+.hero p{max-width:640px;margin:14px auto;color:var(--mu)}
+.btn{display:inline-block;margin:6px;padding:11px 24px;border:2px solid var(--red);background:transparent;color:#fff;font:1.1rem 'Bebas Neue';letter-spacing:.1em;text-decoration:none;cursor:pointer;transition:.25s}
+.btn:hover{background:var(--red);box-shadow:0 0 22px var(--red)}
+section{padding:50px 0}
+h2{font-size:2.4rem;color:#fff;border-left:6px solid var(--red);padding-left:14px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.box{background:linear-gradient(160deg,var(--p),#0c0d11);border:1px solid var(--l);padding:22px;position:relative}
+.box:before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:repeating-linear-gradient(90deg,var(--red) 0 12px,transparent 12px 24px)}
+.stat{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+.stat div{flex:1;min-width:110px;text-align:center;border:1px dashed var(--l);padding:12px}
+.stat b{display:block;font:2.4rem 'Bebas Neue';color:var(--amb)}
+/* filter */
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tools input{flex:1;min-width:200px;padding:11px 14px;background:var(--p);border:1px solid var(--l);color:#fff;font:inherit}
+.tools input:focus{outline:2px solid var(--red)}
+.chip{padding:9px 16px;background:var(--p);border:1px solid var(--l);color:var(--tx);cursor:pointer;font:inherit}
+.chip.on,.chip:hover{border-color:var(--red);background:#2a0d11;color:#fff}
+/* cards */
+#list{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:20px}
+.card{background:var(--p);border:1px solid var(--l);cursor:pointer;position:relative;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--red);box-shadow:0 10px 30px rgba(193,18,31,.35)}
+.card .door{height:92px;background:repeating-linear-gradient(90deg,#0b0c10 0 22px,#3a3d4a 22px 27px);position:relative;display:flex;align-items:flex-end;padding:8px 12px;border-bottom:3px solid var(--red)}
+.card:hover .door{background:repeating-linear-gradient(90deg,#14060a 0 22px,#7a1a24 22px 27px)}
+.card .door:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,220,130,.25),transparent 55%)}
+.no{position:relative;z-index:1;font:1.2rem 'Special Elite';color:var(--amb);background:rgba(0,0,0,.7);padding:1px 8px}
+.tag{position:absolute;right:10px;top:10px;z-index:2;font:1.1rem 'Bebas Neue';padding:2px 12px;background:var(--red);color:#fff;letter-spacing:.08em}
+.tag.n{background:#33363f;color:var(--mu)}
+.card .in{padding:16px;flex:1;display:flex;flex-direction:column;gap:6px}
+.card h3{font-size:1.45rem;line-height:1.15;color:#fff}
+.card small{color:var(--mu)}
+.card .m{margin-top:auto;display:flex;justify-content:space-between;font-size:.85rem;border-top:1px dashed var(--l);padding-top:8px;color:var(--amb)}
+/* modal */
+#md{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(5px)}
+#md.on{display:flex}
+.pn{width:min(860px,100%);max-height:92vh;overflow:auto;background:var(--p);border:2px solid var(--red);box-shadow:0 0 60px rgba(193,18,31,.5);animation:zm .35s ease}
+@keyframes zm{from{transform:scale(.7);opacity:0}}
+.ph{display:flex;gap:18px;padding:20px;flex-wrap:wrap;background:linear-gradient(90deg,#2a0d11,var(--p));border-bottom:1px solid var(--l);align-items:center}
+.mug{width:110px;height:140px;background:#1a1c24;border:3px solid #ddd;flex:none;position:relative}
+.mug i{position:absolute;left:0;right:0;font:.7rem 'Special Elite';text-align:center;background:#ddd;color:#000}
+.ph h3{font-size:2rem;color:#fff;line-height:1.1}
+.pb{padding:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 24px}
+.pb div{border-bottom:1px solid var(--l);padding-bottom:8px}
+.pb span{display:block;font-size:.75rem;color:var(--mu);text-transform:uppercase;letter-spacing:.1em}
+.pb .w{grid-column:1/-1}
+.x{position:sticky;top:0;float:right;margin:10px;background:var(--red);color:#fff;border:0;width:38px;height:38px;font-size:1.3rem;cursor:pointer;z-index:3}
+.warn{margin:0 22px 22px;padding:10px 14px;border:1px dashed var(--amb);color:var(--amb);font-size:.88rem}
+footer{border-top:2px solid var(--red);padding:30px 5vw;text-align:center;color:var(--mu);font-size:.9rem;background:#050507}
+.empty{grid-column:1/-1;text-align:center;color:var(--mu);padding:40px}
+@media(max-width:600px){nav div{display:none}.ph{flex-direction:column;text-align:center}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<div id="bg"><div class="fog a"></div><div class="fog b"></div><div class="beam"></div></div>
+<nav><b>⛓ LAPAS SINTA</b><div><a href="#beranda">Beranda</a><a href="#tentang">Tentang SINTA</a><a href="#daftar">Daftar Jurnal</a><a href="#penulis">Pengelola</a><a href="#tautan">Tautan</a></div></nav>
+
+<header class="hero wrap" id="beranda">
+<svg viewBox="0 0 200 240" aria-label="Menara pengawas penjara">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3d4a"/><stop offset="1" stop-color="#14151b"/></linearGradient></defs>
+<path d="M95 100h10v130h-10zM70 230h60v6H70z" fill="url(#g)"/>
+<path d="M60 60h80l10 40H50z" fill="#c1121f"/>
+<rect x="64" y="64" width="72" height="30" fill="#111"/>
+<path d="M72 64v30M84 64v30M96 64v30M108 64v30M120 64v30M132 64v30" stroke="#555" stroke-width="3"/>
+<path d="M100 20l-8 40h16z" fill="#ffb703"/><circle cx="100" cy="18" r="9" fill="#ffe08a"/>
+<path d="M92 22L10 0v50zM108 22L190 0v50z" fill="rgba(255,224,138,.14)"/>
+<circle cx="100" cy="150" r="14" fill="none" stroke="#c1121f" stroke-width="4"/><rect x="88" y="150" width="24" height="26" fill="#c1121f"/><circle cx="100" cy="162" r="4" fill="#000"/>
+</svg>
+<h1>Lapas <span>SINTA</span></h1>
+<p class="typ">“Masuk sebagai jurnal, keluar sebagai rujukan.” Penjara paling bergengsi di dunia riset Indonesia — dihuni 21 jurnal ilmiah, lengkap dengan data indeks, biaya, dan jadwal terbit mereka.</p>
+<a class="btn" href="#daftar">Masuk ke Blok Jurnal</a><a class="btn" href="#tentang">Apa itu SINTA?</a>
+<div class="stat"><div><b id="s1">21</b>Data jurnal</div><div><b id="s2">0</b>Blok S1 (maksimum)</div><div><b id="s3">0</b>Blok S4</div><div><b id="s4">0</b>Gratis biaya terbit</div></div>
+</header>
+
+<section id="tentang"><div class="wrap"><h2>Berkas Perkara: Apa itu SINTA?</h2>
+<div class="grid2">
+<div class="box"><h3>Science and Technology Index</h3><p>SINTA adalah portal pengindeksan dan pemeringkatan kinerja riset di Indonesia milik Kemdiktisaintek. Di sana tersimpan profil peneliti, institusi, artikel, serta akreditasi jurnal ilmiah nasional.</p></div>
+<div class="box"><h3>Sistem “Blok” Peringkat</h3><p>Jurnal terakreditasi dibagi enam peringkat. <b style="color:var(--amb)">SINTA 1</b> adalah tertinggi dan paling ketat pengawasannya, <b>SINTA 6</b> terendah. Di situs ini, tiap peringkat dianggap sebagai blok sel.</p></div>
+<div class="box"><h3>Cara Membaca Data</h3><p>Setiap sel punya nomor berkas, peringkat, biaya (APC), frekuensi terbit, dan cakupan topik. Klik kartu mana pun untuk memperbesar dan membuka berkas lengkapnya.</p></div>
+</div></div></section>
+
+<section id="daftar"><div class="wrap"><h2>Daftar Penghuni Sel</h2>
+<div class="tools"><input id="q" placeholder="Cari nama jurnal, penerbit, atau topik…" aria-label="Cari">
+<button class="chip on" data-f="all">Semua</button><button class="chip" data-f="1">SINTA 1</button><button class="chip" data-f="4">SINTA 4</button><button class="chip" data-f="0">Belum terverifikasi</button><button class="chip" data-f="free">APC Gratis</button></div>
+<div id="list"></div></div></section>
+
+<section id="penulis"><div class="wrap"><h2>Petugas Pencatat</h2>
+<div class="grid2">
+<div class="box"><h3>Muhammad Nur Rifandi</h3><p class="typ">Siswa PKL — Al Muhtadin, Depok</p><p>Berstatus siswa magang yang menyusun katalog jurnal SINTA ini sebagai bagian dari kegiatan praktik kerja lapangan.</p></div>
+<div class="box"><h3>Pembimbing</h3><p class="typ">Pak Riadi Marta Dinata, S.Ti., M.Kom</p><p>Kepala Laboratorium Komputer FSTT ISTN, pembimbing selama masa magang berlangsung.</p></div>
+</div></div></section>
+
+<section id="tautan"><div class="wrap"><h2>Pintu Keluar: Tautan Penting</h2>
+<div class="grid2">
+<div class="box"><h3>Portal SINTA</h3><p><a href="https://sinta.kemdiktisaintek.go.id/" target="_blank" rel="noopener">sinta.kemdiktisaintek.go.id</a><br>Sumber data utama peringkat dan profil jurnal.</p></div>
+<div class="box"><h3>Cari Jurnal di SINTA</h3><p><a href="https://sinta.kemdiktisaintek.go.id/journals" target="_blank" rel="noopener">Daftar jurnal terakreditasi</a><br>Cek peringkat resmi sebelum mengirim naskah.</p></div>
+<div class="box"><h3>Tips Sebelum Submit</h3><p>Pastikan peringkat, biaya, dan jalur submission masih berlaku di situs resmi jurnal, karena kebijakan APC dan OJS bisa berubah sewaktu-waktu.</p></div>
+</div></div></section>
+
+<footer><p class="typ">© 2026 Lapas SINTA — disusun oleh Muhammad Nur Rifandi, siswa PKL Al Muhtadin Depok, di bawah bimbingan Pak Riadi Marta Dinata, S.Ti., M.Kom (Kalab Komputer FSTT ISTN).<br>Sumber: <a href="https://sinta.kemdiktisaintek.go.id/" target="_blank" rel="noopener">SINTA Kemdiktisaintek</a> dan OJS masing-masing jurnal. Data diolah dari berkas yang diberikan.</p></footer>
+
+<div id="md" role="dialog" aria-modal="true"><div class="pn" id="pn"></div></div>
+
+<script>
+const S="https://sinta.kemdiktisaintek.go.id/journals";
+// [nama, singkat, sinta(0=belum terverifikasi), penerbit, issn, frekuensi, APC, submit, cakupan, indeks, catatan, url]
+const D=[
+["Jurnal Bahasa Indonesia Prima","BIP",0,"Prodi Pendidikan Bahasa dan Sastra Indonesia, Universitas Prima Indonesia","P-ISSN 2088-365X · E-ISSN 2684-6780","2×/tahun (Maret & September)","Rp500.000","Rp0","Linguistik, sastra, dan pendidikan bahasa dan sastra Indonesia","DOI 10.34012/bip · Open Access · Peer-reviewed","APC mencakup DOI, cek Turnitin, serta editing dan formatting akhir. Nama jurnal pada dua sumber data sedikit berbeda.",S],
+["AS Siyasah: Jurnal Ilmu Sosial dan Ilmu Politik","Asy",4,"UPT Publication and Journal Management, Universitas Islam Kalimantan","E-ISSN 2549-1865","2×/tahun (Mei & November)","Rp500.000","Rp0","Administrasi publik, pembangunan daerah, ilmu politik, pemerintahan, ilmu hukum","Google Scholar, Garuda, Crossref, SINTA, BASE, Dimensions","Akreditasi SINTA 4 berlaku Vol. 07 No. 02 (Nov 2022) sampai Vol. 12 No. 02 (Nov 2027). DOI 10.31602.",S],
+["Al-Fakkaar: Jurnal Ilmiah Pendidikan Bahasa Arab","Al-Fakkaar",0,"Pendidikan Bahasa Arab, Universitas Islam Darul 'Ulum Lamongan","P-ISSN 2745-8431 · E-ISSN 2745-8423","Belum tercantum","Rp500.000","Rp0","Pengajaran bahasa Arab, sastra Arab, metodologi, media, dan teknologi pembelajaran","Peer-reviewed","Peringkat SINTA, frekuensi, dan DOI prefix belum tercantum pada data awal. Lihat berkas nomor 6 untuk pembaruan.",S],
+["Gema Kampus IISIP YAPIS Biak","Gema Kampus",0,"IISIP YAPIS Biak (LPPM)","P-ISSN 2085-3335 · E-ISSN 2715-1840","2×/tahun (April & Oktober)","Rp750.000 (≈ US$44,54)","Rp0","Administrasi, ilmu sosial, dan ilmu politik","Belum dicantumkan lengkap","Edisi terlihat: Vol. 21 No. 1 (2026). Biaya dibayar setelah naskah diterima, bukan saat submit.",S],
+["Jurnal Teologi (Journal of Theology)","JT",0,"Fakultas Teologi, Universitas Sanata Dharma","P-ISSN 2302-5476 · E-ISSN 2579-3934","2×/tahun (Mei & November)","Rp0 (waiver tersedia)","Rp0","Teologi dan refleksi iman dalam konteks Indonesia dan Asia","Google Scholar, Garuda, SINTA · DOI 10.24071/jt","Sistem submission pindah ke OJS baru sejak Januari 2026. Terbitan terbaru: Vol. 15 No. 1 (13 Mei 2026). Peringkat SINTA belum terverifikasi dan info biaya perlu dikonfirmasi ulang.",S],
+["Al-Fakkaar (Pembaruan Data)","Al-Fakkaar",0,"Prodi PBA, Universitas Islam Darul 'Ulum Lamongan","P-ISSN 2745-8431 · E-ISSN 2745-8423","2×/tahun","Rp500.000","Rp0","Pendidikan Bahasa Arab, balaghah, keterampilan berbicara, penerjemahan, media pembelajaran","Peer-reviewed · DOI issue 10.52166/alf.v7i2","Terbitan terbaru: Vol. 7 No. 2 (Agustus 2026, terbit 11 Agustus 2026). SINTA, Scopus, dan template belum terverifikasi.",S],
+["Scientific Journal (SCIENA)","SCIENA",4,"Scientific.id","E-ISSN 2810-0204","6×/tahun","Rp1.000.000","Tidak disebut","Multidisiplin: sains alam, teknik, sosial, ekonomi, biologi, kedokteran","Open Access · Peer-reviewed","Terbitan terkini Vol. 5 No. 5 (8 September 2026). Biaya yang sudah dibayar tidak dapat dikembalikan.",S],
+["Kegiatan Positif: Jurnal Hasil Karya Pengabdian Masyarakat","Kegiatan Positif",4,"Asosiasi Riset Ilmu Manajemen Kewirausahaan dan Bisnis Indonesia","P-ISSN 3024-837X · E-ISSN 3021-8748","4×/tahun (Mar, Jun, Sep, Des)","Rp1.000.000","Tidak disebut","Pengabdian masyarakat lintas bidang: UMKM, kesehatan, teknologi tepat guna, lingkungan, budaya","DOI 10.61132 · Google Scholar, Garuda, Crossref, Dimensions, Copernicus, WorldCat","SK akreditasi 355/DST/D.D1/HM.01.01/2026. Edisi terbaru: Vol. 4 No. 3 (23 September 2026). Bayar hanya ke rekening resmi jurnal.",S],
+["Indonesian Society and Religion Research","ISRR",4,"Yayasan Cendekia Citra Gemilang","E-ISSN 3046-9678","4×/tahun (Feb, Mei, Agu, Nov)","Rp650.000","Rp0","Studi agama dari perspektif sosial, budaya, etnografi (di luar teologi dan filsafat agama)","SINTA ID 17603 · iThenticate","APC mencakup maksimal 12 halaman, DOI, cek similarity, dan layout. Edisi terbaru Vol. 3 No. 2 (Agustus 2026).",S],
+["International Journal of Evaluation and Research in Education","IJERE",1,"Institute of Advanced Engineering and Science (IAES)","P-ISSN 2252-8822 · E-ISSN 2620-5440","6×/tahun (Feb, Apr, Jun, Agu, Okt, Des)","USD 475 (sole author USD 950)","Tidak disebut","Evaluasi pendidikan, kurikulum, pendidikan guru, TESOL, pembelajaran berbasis teknologi","Scopus Q2 · SJR Q3 · Garuda · DOI 10.11591/ijere","Pisahkan kuartil Scopus (Q2) dan SJR (Q3) saat mencatat. Edisi terbaru Vol. 15 No. 5 (Oktober 2026). Halaman tambahan dikenai biaya.",S],
+["BISMA (Bisnis dan Manajemen)","BISMA",1,"Departemen Manajemen FEB, Universitas Negeri Surabaya","P-ISSN 1979-7192 · E-ISSN 2549-7790","2×/tahun (April & Oktober)","Rp3.500.000 / USD 210","Rp0","Manajemen strategis, keuangan, pemasaran, SDM, kewirausahaan, UKM","Scopus (tercantum) · Google Scholar · Garuda · Dimensions · DOI 10.2670","Berlaku untuk naskah yang dikirim sejak 6 Maret 2026. Tanpa waiver, tanpa refund. Bahasa Indonesia atau Inggris.","https://journal.unesa.ac.id/index.php/bisma"],
+["Indonesian Journal of Science and Technology","IJoST",1,"Universitas Pendidikan Indonesia (UPI)","P-ISSN 2528-1410 · E-ISSN 2527-8045","3×/tahun (April, September, Desember)","USD 500 / Rp8.500.000 (2026); USD 1.000 mulai Jan 2027","Tidak disebut","Sains dan teknologi: teknik, pertanian, kimia, fisika, komputer, lingkungan, pangan","Scopus · SCImago Q1 · Garuda · Crossref · BASE · DOI 10.17509/ijost","Sejak 2 April 2026 submission pindah ke OJS 3: ijost.upi.edu. Artikel berbahasa Inggris.","https://ijost.upi.edu/index.php/ijost/index"],
+["Syariah: Jurnal Hukum dan Pemikiran","Syariah",1,"Fakultas Syariah, UIN Antasari Banjarmasin","P-ISSN 1412-6303 · E-ISSN 2549-001X","2×/tahun (Juni/Juli & Desember)","Rp0 (tanpa APC)","Rp0","Hukum Islam, fikih, maqashid syariah, hukum keluarga, ekonomi syariah, hukum dan teknologi","Scopus · DOAJ · Google Scholar · DOI 10.18592","Double-blind review, maksimum similarity 20%. Bulan terbit berbeda antarhalaman OJS, jadi konfirmasi saat submit.","https://jurnal.uin-antasari.ac.id/index.php/syariah/"],
+["Jurnal Medik Veteriner (JMV)","JMV",1,"Universitas Airlangga & IVMA","P-ISSN 2615-7497 · E-ISSN 2581-012X","2×/tahun (April & Oktober)","Rp6.500.000 / USD 400","Rp0","Kedokteran hewan dan ilmu peternakan, patologi, kesehatan masyarakat veteriner, satwa liar","Scopus (sejak 29 Agustus 2023) · Garuda · DOI 10.20473/jmv","Berlaku sejak 1 Februari 2026. Waiver individual dapat diajukan. Kuartil Scopus tidak ditetapkan tanpa tahun metrik.","https://e-journal.unair.ac.id/JMV"],
+["Lex Scientia Law Review","LSLR",1,"Fakultas Hukum, Universitas Negeri Semarang","P-ISSN 2598-9677 · E-ISSN 2598-9685","2×/tahun (Mei & November)","Rp7.500.000 (penulis Indonesia)","Rp0","Kajian hukum kontemporer dan komparatif, HAM, hukum lingkungan, teknologi dan hukum","Scopus · DOAJ · DOI 10.15294/lesrev","Double-blind, minimal 9.000 kata, wajib ORCID, sitasi Chicago footnote. Estimasi 60 hari keputusan awal, tingkat penerimaan 35%.","https://journal.unnes.ac.id/journals/lslr"],
+["Jurnal Studi Ilmu-Ilmu Al-Qur'an dan Hadis","JSIIAH",1,"Fakultas Ushuluddin dan Pemikiran Islam, UIN Sunan Kalijaga","P-ISSN 1411-6855 · E-ISSN 2548-4737","2×/tahun (Januari & Juli)","Rp6.000.000","Rp0","Kajian Al-Qur'an dan Hadis, tafsir, manuskrip, living Qur'an dan hadis","Scopus · DOAJ · Dimensions · Garuda · Crossref · DOI 10.14421/qh","APC Rp6 juta berlaku sejak Vol. 26 No. 2 (Juli 2025). Edisi terbaru Vol. 27 No. 2 (31 Juli 2026). Naskah boleh berbahasa Inggris, Indonesia, atau Arab.",S],
+["Izdihar: Journal of Arabic Language Teaching, Linguistics, and Literature","Izdihar",1,"Universitas Muhammadiyah Malang","P-ISSN 2622-738X · E-ISSN 2622-7371","3×/tahun (April, Agustus, Desember)","Rp2.500.000 / USD 200","Rp0","Pengajaran bahasa Arab, linguistik, dan sastra Arab","DOAJ · Open Access · DOI 10.22219","Double-blind review, terbit sejak Agustus 2018. Status Scopus belum dikonfirmasi.","https://ejournal.umm.ac.id/index.php/izdihar/index"],
+["Jambura Law Review","Jambura Law Rev.",0,"Fakultas Hukum, Universitas Negeri Gorontalo","P-ISSN 2654-9255 · E-ISSN 2656-0461","2×/tahun (Januari & Juli)","Rp5.000.000 (+ Rp2.500.000 proofreading)","Rp0","Kajian hukum kontemporer normatif dan empiris, isu hukum ASEAN dan global","Scopus (diklaim jurnal) · Google Scholar · DOI 10.33756","Berbahasa Inggris. Peringkat SINTA dan kuartil belum tersedia pada materi yang diberikan.","https://ejurnal.ung.ac.id/index.php/jalrev/index"],
+["Indonesian Food Science and Technology Journal","IFSTJ",1,"Jurusan Teknologi Hasil Pertanian, Universitas Jambi","E-ISSN 2615-367X","2×/tahun (Juli & Desember)","USD 200 (proofreading USD 50–150)","Rp0","Kimia pangan, pengolahan, mikrobiologi, keamanan pangan, gizi, pangan fungsional","Scopus · SCImago · DOAJ · DOI 10.22437","Waiver dan diskon tersedia dengan syarat tertentu. Penekanan pada pangan Indonesia.","https://online-journal.unja.ac.id/index.php/ifstj/index"],
+["Journal of Innovation in Educational and Cultural Research","JIECR",1,"Yayasan Keluarga Guru Mandiri","P-ISSN 2722-9688 · E-ISSN 2722-9696","4×/tahun (Jan, Apr, Jul, Okt)","Rp3.300.000 (proofreading termasuk)","Rp0","Budaya, masyarakat, kearifan lokal, pendidikan, warisan budaya","DOAJ · Dimensions · Garuda · Google Scholar","Diskon APC hingga 100% untuk kriteria tertentu. Scopus tidak tercantum.","http://jiecr.org/index.php/jiecr/index"],
+["Journal of Tropical Biodiversity and Biotechnology","JTBB",0,"Universitas Gadjah Mada","Belum tercantum","Belum tercantum","USD 250 (diskon & waiver tersedia)","Tidak disebut","Biodiversitas tropis, ekologi, konservasi, bioteknologi, bioinformatika, etnobiologi","Open Access · Peer-reviewed","Submission lewat OJS 3 baru. Penulis tunggal tidak dianjurkan. Peringkat SINTA belum tersedia.","https://journal.ugm.ac.id/v3/jtbb/index"]
+];
+const $=s=>document.querySelector(s),L=$("#list");let F="all";
+const tag=s=>s?`<span class="tag">SINTA ${s}</span>`:`<span class="tag n">BELUM TERVERIFIKASI</span>`;
+const free=d=>/^Rp0/.test(d[6]);
+function render(){const q=$("#q").value.toLowerCase();
+const r=D.map((d,i)=>[d,i]).filter(([d])=>(F=="all"||(F=="free"?free(d):d[2]==F))&&(d=>d.join(" ").toLowerCase().includes(q))(d));
+L.innerHTML=r.length?r.map(([d,i])=>`<article class="card" tabindex="0" data-i="${i}"><div class="door">${tag(d[2])}<span class="no">SEL #${String(i+1).padStart(2,"0")}</span></div><div class="in"><h3>${d[0]}</h3><small>${d[3]}</small><small>${d[8]}</small><div class="m"><span>APC: ${d[6].split(" (")[0]}</span><span>${d[5].split(" (")[0]}</span></div></div></article>`).join(""):`<p class="empty typ">Tidak ada penghuni yang cocok dengan pencarianmu.</p>`}
+function open_(i){const d=D[i];$("#pn").innerHTML=`<button class="x" aria-label="Tutup">✕</button><div class="ph"><div class="mug"><svg viewBox="0 0 110 140" width="100%" height="100%"><circle cx="55" cy="55" r="24" fill="#4a4d5a"/><path d="M15 130q40-60 80 0z" fill="#4a4d5a"/><path d="M12 0v140M32 0v140M52 0v140M72 0v140M92 0v140" stroke="#c1121f" stroke-width="3" opacity=".7"/></svg><i>#${String(i+1).padStart(2,"0")}</i></div><div><div style="margin-bottom:6px">${tag(d[2])}</div><h3>${d[0]}</h3><small class="typ" style="color:var(--mu)">Singkatan: ${d[1]}</small></div></div>
+<div class="pb"><div><span>Penerbit</span>${d[3]}</div><div><span>ISSN</span>${d[4]}</div><div><span>Frekuensi terbit</span>${d[5]}</div><div><span>Biaya publikasi (APC)</span>${d[6]}</div><div><span>Biaya submission</span>${d[7]}</div><div><span>Peringkat SINTA</span>${d[2]?"SINTA "+d[2]:"Belum terverifikasi dari data"}</div><div class="w"><span>Cakupan topik</span>${d[8]}</div><div class="w"><span>Indeksasi & identitas</span>${d[9]}</div><div class="w"><span>Catatan petugas</span>${d[10]}</div></div>
+<div class="warn typ">⚠ Verifikasi ulang biaya dan peringkat di situs resmi sebelum mengirim naskah.</div>
+<div style="padding:0 22px 22px"><a class="btn" href="${d[11]}" target="_blank" rel="noopener">${d[11]==S?"Cari di SINTA":"Kunjungi Website"} ↗</a><a class="btn" href="${S}" target="_blank" rel="noopener">Portal SINTA ↗</a></div>`;
+$("#md").classList.add("on");document.body.style.overflow="hidden"}
+function close_(){$("#md").classList.remove("on");document.body.style.overflow=""}
+L.addEventListener("click",e=>{const c=e.target.closest(".card");if(c)open_(+c.dataset.i)});
+L.addEventListener("keydown",e=>{if(e.key=="Enter"){const c=e.target.closest(".card");if(c)open_(+c.dataset.i)}});
+$("#md").addEventListener("click",e=>{if(e.target.id=="md"||e.target.closest(".x"))close_()});
+document.addEventListener("keydown",e=>{if(e.key=="Escape")close_()});
+$("#q").addEventListener("input",render);
+document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));b.classList.add("on");F=b.dataset.f;render()});
+$("#s1").textContent=D.length;$("#s2").textContent=D.filter(d=>d[2]==1).length;$("#s3").textContent=D.filter(d=>d[2]==4).length;$("#s4").textContent=D.filter(free).length;
+render();
+</script></body></html>
